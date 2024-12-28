@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+}
+
+#boardContainer {
+    max-width: 150px;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
