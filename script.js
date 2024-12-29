@@ -23,6 +23,10 @@ function cell() {
     let value = "";
 
     const addToken = (token) => {
+    if(value != ""){
+        alert("Please choose an empty space");
+        return;
+    }
     value = token;
     };
 
@@ -47,11 +51,17 @@ const game = (function playGame() {
     }
     ];
 
+    const setName = () => {
     const playerOneNameSpan = document.getElementById("playerOneName");
     const playerTwoNameSpan = document.getElementById("playerTwoName");
 
     playerOneNameSpan.textContent = players[0].name;
     playerTwoNameSpan.textContent = players[1].name;
+    }
+
+    const changeName = (player, value) => {
+        players[player].name = value;
+    };
 
     let activePlayer = players[0];
 
@@ -117,9 +127,38 @@ const game = (function playGame() {
         document.getElementById("resultsDisplay").textContent = `Game Over! ${activePlayer.name} has won.`
     }
 
-    return {printBoard, resetGame};
+    return {printBoard, resetGame, setName, changeName};
 })();
 
 game.printBoard();
+game.setName();
 const resetBtn = document.getElementById("reset");
-resetBtn.addEventListener("click", game.resetGame)
+resetBtn.addEventListener("click", game.resetGame);
+
+const playerOneNameBtn = document.getElementById("addPlayerOneName");
+const playerTwoNameBtn = document.getElementById("addPlayerTwoName");
+const newPlayerOneName = document.getElementById("newPlayerOneName");
+const newPlayerTwoName = document.getElementById("newPlayerTwoName");
+playerOneNameBtn.addEventListener("click", () => {
+if(newPlayerOneName.value != 0){
+    game.changeName(0,newPlayerOneName.value);
+    game.setName();
+}
+newPlayerOneName.classList.toggle("hide");
+playerOneNameBtn.textContent = playerOneNameBtn.textContent == "Submit" ?
+"Change Name" : "Submit";
+newPlayerOneName.value = "";
+}
+ )
+
+playerTwoNameBtn.addEventListener("click", () => {
+if(newPlayerTwoName.value != 0){
+        game.changeName(1,newPlayerTwoName.value);
+        game.setName();
+    }
+    newPlayerTwoName.classList.toggle("hide");
+    playerTwoNameBtn.textContent = playerTwoNameBtn.textContent == "Submit" ?
+    "Change Name" : "Submit";
+    newPlayerTwoName.value = "";
+    }
+     )

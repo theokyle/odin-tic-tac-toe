@@ -27,10 +27,7 @@ body {
     font-weight: bold;
     font-size: 3rem;
 }
-#playerDisplay {
-    display: flex;
-    align-items: center;
-}
+
 
 .active {
     border: 2px solid blue;
@@ -60,4 +57,27 @@ p {
     color: white;
 }
 
+#playerDisplay {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+#playerDisplay div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hide {
+display: none;
+}
+
+input {
+    margin: 5px 0;
+    padding: 5px;
+    text-align: center;
+}
 

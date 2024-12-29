@@ -9,8 +9,16 @@
 <body>
     <h1>Tic Tac Toe</h1>
     <div id="playerDisplay">
-        <p id="playerOneContainer" class="active"><span class="bold">X:</span> <span id="playerOneName"></span></p>
-        <p id="playerTwoContainer"><span class="bold">O:</span> <span id="playerTwoName"></span></p>
+        <div>
+            <p id="playerOneContainer" class="active"><span class="bold">X:</span> <span id="playerOneName"></span></p>
+            <input id="newPlayerOneName" type="text" class="hide">
+            <button id="addPlayerOneName">Change Name</button>
+        </div>
+        <div>
+           <p id="playerTwoContainer"><span class="bold">O:</span> <span id="playerTwoName"></span></p>
+           <input id="newPlayerTwoName" type="text" class="hide"> 
+           <button id="addPlayerTwoName">Change Name</button>
+        </div>
     </div>
     <div id="resultsDisplay"></div>
     <div id="boardContainer"></div>
