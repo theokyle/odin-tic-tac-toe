@@ -73,8 +73,6 @@ const game = (function playGame() {
     playerTwoContainer.classList.toggle("active");
     };
 
-    const getActivePlayer = () => activePlayer;
-
     const printBoard = () => {
         const boardContainer = document.getElementById("boardContainer");
         boardContainer.textContent = "";
@@ -84,6 +82,9 @@ const game = (function playGame() {
                 cellButton.classList.add("cell");
                 cellButton.textContent = cell.getValue();
                 cellButton.onclick = function() {
+                    if(document.getElementById("resultsDisplay").textContent != ""){
+                        return;
+                    }
                     cell.addToken(activePlayer.token);
                     checkWin();
                     printBoard();
@@ -120,18 +121,21 @@ const game = (function playGame() {
         gameBoard.setBoard();
         document.getElementById("resultsDisplay").textContent = "";
         printBoard();
-        activePlayer = players[0];
+        if (activePlayer === players[1]){
+            switchPlayer();
+        }
     }
 
     const displayWinner = () => {
-        document.getElementById("resultsDisplay").textContent = `Game Over! ${activePlayer.name} has won.`
-    }
+        document.getElementById("resultsDisplay").textContent = `Game Over! ${activePlayer.name} has won.`;
+        };
 
     return {printBoard, resetGame, setName, changeName};
 })();
 
 game.printBoard();
 game.setName();
+
 const resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", game.resetGame);
 
