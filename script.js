@@ -47,6 +47,12 @@ const game = (function playGame() {
     }
     ];
 
+    const playerOneNameSpan = document.getElementById("playerOneName");
+    const playerTwoNameSpan = document.getElementById("playerTwoName");
+
+    playerOneNameSpan.textContent = players[0].name;
+    playerTwoNameSpan.textContent = players[1].name;
+
     let activePlayer = players[0];
 
     const switchPlayer = () => {

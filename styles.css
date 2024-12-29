@@ -23,3 +23,21 @@ body {
     flex-wrap: wrap;
 }
 
+#playerDisplay {
+    display: flex;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    margin: 10px;
+}
+
+#resultsDisplay {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
