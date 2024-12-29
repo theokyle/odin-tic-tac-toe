@@ -38,11 +38,11 @@ const game = (function playGame() {
 
     const players = [
     {
-        name: "playerOne",
+        name: "Player One",
         token: "X",
     },
     {
-        name: "playerTwo",
+        name: "Player Two",
         token: "O",
     }
     ];
@@ -67,6 +67,7 @@ const game = (function playGame() {
                     cell.addToken(activePlayer.token);
                     checkWin();
                     printBoard();
+                    switchPlayer();
                 }
                 boardContainer.appendChild(cellButton);
             })
@@ -76,26 +77,39 @@ const game = (function playGame() {
     const checkWin = () => {
         for(let x = 0; x < 3; x ++) {
             if(board[x][0].getValue() === activePlayer.token && board[x][1].getValue() === activePlayer.token && board[x][2].getValue() === activePlayer.token){
-                console.log("Win!");
+                displayWinner();
             }
         };
 
         for(let y = 0; y < 3; y ++) {
             if(board[0][y].getValue() === activePlayer.token && board[1][y].getValue() === activePlayer.token && board[2][y].getValue() === activePlayer.token){
-                console.log("Win!");
+                displayWinner();
             }
         }
 
         if(board[0][0].getValue() === activePlayer.token && board[1][1].getValue() === activePlayer.token && board[2][2].getValue() === activePlayer.token){
-            console.log("Win!");
+            displayWinner();
         }
 
         if(board[0][2].getValue() === activePlayer.token && board[1][1].getValue() === activePlayer.token && board[2][0].getValue() === activePlayer.token){
-            console.log("Win!");
+            displayWinner();
         }
     }
 
-    return {switchPlayer, getActivePlayer, printBoard};
+    const resetGame = () => {
+        gameBoard.setBoard();
+        document.getElementById("resultsDisplay").textContent = "";
+        printBoard();
+        activePlayer = players[0];
+    }
+
+    const displayWinner = () => {
+        document.getElementById("resultsDisplay").textContent = `Game Over! ${activePlayer.name} has won.`
+    }
+
+    return {printBoard, resetGame};
 })();
 
 game.printBoard();
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener("click", game.resetGame)
