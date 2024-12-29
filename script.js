@@ -56,7 +56,11 @@ const game = (function playGame() {
     let activePlayer = players[0];
 
     const switchPlayer = () => {
+    const playerOneContainer = document.getElementById("playerOneContainer");
+    const playerTwoContainer = document.getElementById("playerTwoContainer");
     activePlayer = activePlayer === players[0] ? players[1] : players[0];
+    playerOneContainer.classList.toggle("active");
+    playerTwoContainer.classList.toggle("active");
     };
 
     const getActivePlayer = () => activePlayer;

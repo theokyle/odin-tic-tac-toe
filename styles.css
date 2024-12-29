@@ -11,20 +11,31 @@ body {
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border: 2px solid black;
 }
 
 #boardContainer {
-    max-width: 150px;
-    height: 150px;
+    max-width: 300px;
+    height: 300px;
     display: flex;
     flex-wrap: wrap;
 }
 
+#boardContainer button {
+    font-weight: bold;
+    font-size: 3rem;
+}
 #playerDisplay {
     display: flex;
+    align-items: center;
+}
+
+.active {
+    border: 2px solid blue;
+    border-radius: 5px;
+    background-color: lightblue;
 }
 
 .bold {
@@ -33,11 +44,20 @@ body {
 
 p {
     margin: 10px;
+    padding: 10px;
 }
 
 #resultsDisplay {
     margin-bottom: 10px;
     font-weight: bold;
+}
+
+#reset {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
 }
 
 
